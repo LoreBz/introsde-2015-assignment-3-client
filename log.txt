@@ -1,0 +1,5 @@
+Method #1: readPersonList() => List
+[introsde.assignment.soap.Person@4141d797]
+ Method #2: readPerson(Long id) => Person
+introsde.assignment.soap.Person@4f47d241
+Method #3: updatePerson(Person p) => Person
