@@ -1,5 +1,193 @@
+http://lorebzpeoplesoap.herokuapp.com/ws/people?wsdl
+
 Method #1: readPersonList() => List
-[introsde.assignment.soap.Person@4141d797]
- Method #2: readPerson(Long id) => Person
-introsde.assignment.soap.Person@4f47d241
-Method #3: updatePerson(Person p) => Person
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:person xmlns:ns2="http://soap.assignment.introsde/">
+    <idPerson>1</idPerson>
+    <name>Chuck</name>
+    <lastname>Norris</lastname>
+    <birthdate>2015-12-05T13:54:19Z</birthdate>
+    <Measurements>
+        <lifeStatus>
+            <idMeasure>5</idMeasure>
+            <measureDefinition>
+                <idMeasureDef>1</idMeasureDef>
+                <measureName>weight</measureName>
+                <measureType>double</measureType>
+            </measureDefinition>
+            <value>85.0</value>
+        </lifeStatus>
+    </Measurements>
+</ns2:person>
+
+
+Method #2: readPerson(Long id=1) => Person #1
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:person xmlns:ns2="http://soap.assignment.introsde/">
+    <idPerson>1</idPerson>
+    <name>Chuck</name>
+    <lastname>Norris</lastname>
+    <birthdate>2015-12-05T13:54:19Z</birthdate>
+    <Measurements>
+        <lifeStatus>
+            <idMeasure>5</idMeasure>
+            <measureDefinition>
+                <idMeasureDef>1</idMeasureDef>
+                <measureName>weight</measureName>
+                <measureType>double</measureType>
+            </measureDefinition>
+            <value>85.0</value>
+        </lifeStatus>
+    </Measurements>
+</ns2:person>
+
+
+Method #3: updatePerson(Person p) => Person changing name of Person #1
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:person xmlns:ns2="http://soap.assignment.introsde/">
+    <idPerson>1</idPerson>
+    <name>newName-988139818</name>
+    <lastname>Norris</lastname>
+    <birthdate>2015-12-05T13:54:19Z</birthdate>
+    <Measurements>
+        <lifeStatus>
+            <idMeasure>5</idMeasure>
+            <measureDefinition>
+                <idMeasureDef>1</idMeasureDef>
+                <measureName>weight</measureName>
+                <measureType>double</measureType>
+            </measureDefinition>
+            <value>85.0</value>
+        </lifeStatus>
+    </Measurements>
+</ns2:person>
+
+
+Method #4: createPerson(Person p) => Person with random name, lastname, birthdate set to now
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:person xmlns:ns2="http://soap.assignment.introsde/">
+    <idPerson>55</idPerson>
+    <name>CreatedName-891952593</name>
+    <lastname>CreatedLastname-891952593</lastname>
+    <birthdate>2015-12-06T13:37:43.749Z</birthdate>
+</ns2:person>
+
+
+Method #5: deletePerson(Long id=)55, the one just created
+Person with ID=55 deleted? Ans: true
+
+
+Method #6: readPersonHistory(Long id=1, String measureType=weight) => List
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:healthMeasure xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasureHistory>1</idMeasureHistory>
+    <timestamp>2015-12-05T23:00:00Z</timestamp>
+    <value>74</value>
+    <measureDefinition>
+        <idMeasureDef>1</idMeasureDef>
+        <measureName>weight</measureName>
+        <measureType>double</measureType>
+    </measureDefinition>
+</ns2:healthMeasure>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:healthMeasure xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasureHistory>4</idMeasureHistory>
+    <timestamp>2015-12-05T23:00:00Z</timestamp>
+    <value>85</value>
+    <measureDefinition>
+        <idMeasureDef>1</idMeasureDef>
+        <measureName>weight</measureName>
+        <measureType>double</measureType>
+    </measureDefinition>
+</ns2:healthMeasure>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:healthMeasure xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasureHistory>5</idMeasureHistory>
+    <timestamp>2015-12-05T23:00:00Z</timestamp>
+    <value>85.0</value>
+    <measureDefinition>
+        <idMeasureDef>1</idMeasureDef>
+        <measureName>weight</measureName>
+        <measureType>double</measureType>
+    </measureDefinition>
+</ns2:healthMeasure>
+
+
+Method #7: readMeasureTypes() => List
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:measureDefinition xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasureDef>1</idMeasureDef>
+    <measureName>weight</measureName>
+    <measureType>double</measureType>
+</ns2:measureDefinition>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:measureDefinition xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasureDef>2</idMeasureDef>
+    <measureName>height</measureName>
+    <measureType>double</measureType>
+</ns2:measureDefinition>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:measureDefinition xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasureDef>3</idMeasureDef>
+    <measureName>steps</measureName>
+    <measureType>integer</measureType>
+</ns2:measureDefinition>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:measureDefinition xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasureDef>4</idMeasureDef>
+    <measureName>blood pressure</measureName>
+    <measureType>double</measureType>
+</ns2:measureDefinition>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:measureDefinition xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasureDef>5</idMeasureDef>
+    <measureName>heart rate</measureName>
+    <measureType>integer</measureType>
+</ns2:measureDefinition>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:measureDefinition xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasureDef>6</idMeasureDef>
+    <measureName>bmi</measureName>
+    <measureType>double</measureType>
+</ns2:measureDefinition>
+
+
+Method #8: readPersonMeasure(Long id=1, String measureType=weight, Long mid=1) => Measure
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:HealthMeasureHistory xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasureHistory>1</idMeasureHistory>
+    <timestamp>2015-12-05T23:00:00Z</timestamp>
+    <value>74</value>
+    <measureDefinition>
+        <idMeasureDef>1</idMeasureDef>
+        <measureName>weight</measureName>
+        <measureType>double</measureType>
+    </measureDefinition>
+</ns2:HealthMeasureHistory>
+
+
+Method #9: savePersonMeasure(Long id=1, Measure m) => Measure, a random measure of type weight
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:LifeStatus xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasure>55</idMeasure>
+    <measureDefinition>
+        <idMeasureDef>1</idMeasureDef>
+        <measureName>weight</measureName>
+        <measureType>double</measureType>
+    </measureDefinition>
+    <value>85.0</value>
+</ns2:LifeStatus>
+
+
+Method #10: updatePersonMeasure(Long id=1, Measure m[with id=1]) => Measure 
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<ns2:HealthMeasureHistory xmlns:ns2="http://soap.assignment.introsde/">
+    <idMeasureHistory>1</idMeasureHistory>
+    <timestamp>2015-12-05T23:00:00Z</timestamp>
+    <value>61</value>
+    <measureDefinition>
+        <idMeasureDef>1</idMeasureDef>
+        <measureName>weight</measureName>
+        <measureType>double</measureType>
+    </measureDefinition>
+</ns2:HealthMeasureHistory>

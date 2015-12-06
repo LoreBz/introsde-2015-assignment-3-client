@@ -56,7 +56,7 @@ public class PeopleClient {
 		}
 
 		// Method #2: readPerson(Long id) => Person
-		System.out.println("\n\nMethod #2: readPerson(Long id) => Person");
+		System.out.println("\n\nMethod #2: readPerson(Long id=1) => Person #1");
 		Person person1 = people.readPerson(new Long(first_person_id));
 		JAXBElement<Person> p1 = new JAXBElement<Person>(new QName(
 				"http://soap.assignment.introsde/", "person"), Person.class,
@@ -64,8 +64,8 @@ public class PeopleClient {
 		m.marshal(p1, System.out);
 		// out.println(person1.toString());
 
-		// Method #3: updatePerson(Person p) => Person
-		System.out.println("\n\nMethod #3: updatePerson(Person p) => Person");
+		// Method #3: updatePerson(Person p) => Person 
+		System.out.println("\n\nMethod #3: updatePerson(Person p) => Person changing name of Person #1");
 		int rnd = new Random(System.currentTimeMillis()).nextInt();
 		person1.setName("newName" + rnd);
 		Person upp=people.updatePerson(person1);
@@ -74,8 +74,8 @@ public class PeopleClient {
 				upp);
 		m.marshal(pu, System.out);
 
-		// Method #4: createPerson(Person p) => Person
-		System.out.println("\n\nMethod #4: createPerson(Person p) => Person");
+		// Method #4: createPerson(Person p) => Person 
+		System.out.println("\n\nMethod #4: createPerson(Person p) => Person with random name, lastname, birthdate set to now");
 		Person newPerson = new Person();
 		int rndnew = new Random(System.currentTimeMillis()).nextInt();
 		newPerson.setName("CreatedName" + rndnew);
@@ -98,15 +98,15 @@ public class PeopleClient {
 		m.marshal(pc, System.out);
 
 		// Method #5: deletePerson(Long id)
-		System.out.println("\n\nMethod #5: deletePerson(Long id)");
 		int idToDelete = pcr.getIdPerson();
+		System.out.println("\n\nMethod #5: deletePerson(Long id=)"+idToDelete+", the one just created");
 		boolean del = people.deletePerson(new Long(idToDelete));
 		System.out.println("Person with ID=" + idToDelete + " deleted? Ans: "
 				+ del);
 
 		// Method #6: readPersonHistory(Long id, String measureType) => List
 		System.out
-				.println("\n\nMethod #6: readPersonHistory(Long id, String measureType) => List");
+				.println("\n\nMethod #6: readPersonHistory(Long id="+first_person_id+", String measureType=weight) => List");
 		List<HealthMeasureHistory> hmlist = people.readPersonHistory(new Long(
 				first_person_id), "weight");
 
@@ -145,7 +145,7 @@ public class PeopleClient {
 		// Method #8: readPersonMeasure(Long id, String measureType, Long mid)
 		// => Measure
 		System.out
-				.println("\n\nMethod #8: readPersonMeasure(Long id, String measureType, Long mid) => Measure");
+				.println("\n\nMethod #8: readPersonMeasure(Long id="+first_person_id+", String measureType=weight, Long mid="+mid+") => Measure");
 		HealthMeasureHistory record = people.readPersonMeasure(new Long(
 				first_person_id), "weight", new Long(mid));
 		JAXBElement<HealthMeasureHistory> a = new JAXBElement<HealthMeasureHistory>(
@@ -154,9 +154,9 @@ public class PeopleClient {
 				record);
 		m.marshal(a, System.out);
 
-		// Method #9: savePersonMeasure(Long id, Measure m) =>
+		// Method #9: savePersonMeasure(Long id, Measure m) => Measure
 		System.out
-				.println("\n\nMethod #9: savePersonMeasure(Long id, Measure m) =>");
+				.println("\n\nMethod #9: savePersonMeasure(Long id="+first_person_id+", Measure m) => Measure, a random measure of type weight");
 		LifeStatus newLifestatus = new LifeStatus();
 		MeasureDefinition md = new MeasureDefinition();
 		md.setIdMeasureDef(1);
@@ -164,7 +164,7 @@ public class PeopleClient {
 		md.setMeasureType("double");
 		newLifestatus.setMeasureDefinition(md);
 		newLifestatus.setValue("85.0");
-		LifeStatus savedMeasure = people.savePersonMeasure(new Long(1),
+		LifeStatus savedMeasure = people.savePersonMeasure(new Long(first_person_id),
 				newLifestatus);
 		JAXBElement<LifeStatus> svm = new JAXBElement<LifeStatus>(new QName(
 				"http://soap.assignment.introsde/", "LifeStatus"),
@@ -173,7 +173,7 @@ public class PeopleClient {
 
 		// Method #10: updatePersonMeasure(Long id, Measure m) => Measure
 		System.out
-				.println("\n\nMethod #10: updatePersonMeasure(Long id, Measure m) => Measure ");
+				.println("\n\nMethod #10: updatePersonMeasure(Long id="+first_person_id+", Measure m[with id="+mid+"]) => Measure ");
 		int rndvalue = new Random().nextInt(20);
 		record.setValue("" + (60 + rndvalue));
 		record.setTimestamp(now);
